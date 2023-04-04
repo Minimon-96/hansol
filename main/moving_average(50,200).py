@@ -7,8 +7,8 @@ import time
 import pyupbit
 import pandas as pd
 
-access_key = 'Qeym001xrhviIUdz9cZEOEP93EmjLNxc3gwiyNms'
-secret_key = '7lFyxnUDdX8o6eTGJLbdCWwkIOqisdXWbxKl6q89'
+access_key = 'acc_key'
+secret_key = 'sec_key'
 
 upbit = pyupbit.Upbit(access_key, secret_key)
 coin = "KRW-XRP"       # Coin Symbol
