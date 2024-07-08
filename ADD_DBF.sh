@@ -46,6 +46,8 @@ EOF
 
     if [ $? -ne 0 ]; then
         echo "SQL*Plus Error"
+        echo "CHECK OUTPUT FILE : $OUTPUT_FILE"
+        echo "CHECK TBS_NAME : $TBS_NAME"
         exit 1
     fi
 
@@ -115,6 +117,8 @@ EOF
 
     if [ $? -ne 0 ]; then
         echo "ISQL_CONNECTION ERROR"
+        echo "CHECK OUTPUT FILE : $OUTPUT_FILE"
+        echo "CHECK TBS_NAME : $TBS_NAME"
         exit 1
     fi
 
