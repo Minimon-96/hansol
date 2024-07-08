@@ -1,5 +1,11 @@
 #!/bin/sh
+
+# Set the data
+# ORACLE : USER_PATH / SQLPLUS / ORACLE_SID / PASSWORD / TBS_NAME / HOST / PORT / SQLPLUS
+# ALTIBASE : USER_PATH / iSQL / USERNAME / PASSWORD / TBS_NAME / HOST / PORT
+
 USER_PATH="/inticube/smsom/pilot/supportkt"
+OUTPUT_FILE="$USER_PATH/output.log"
 
 ORACLE_DBF() {
     ORACLE_SID="HSMSCOM"
@@ -9,8 +15,7 @@ ORACLE_DBF() {
     HOST="localhost"
     PORT="1521"
     SQLPLUS="/home/oracle/db/product/12.1.0.2/dbhome_1/bin/sqlplus"
-    OUTPUT_FILE="$USER_PATH/output.log"
-
+    
     ORA_CHECK=$($SQLPLUS $USERNAME/$PASSWORD@$ORACLE_SID << EOF
     EXIT;
 EOF
@@ -80,7 +85,6 @@ ALTIBASE_DBF() {
     TBS_NAME="OM_DATA"
     HOST="localhost"
     PORT="20300"
-    OUTPUT_FILE="$USER_PATH/output.log"
     isql_cmd="$iSQL -s $HOST -u $USERNAME -p $PASSWORD -port $PORT"
 
     ISQL_OUTPUT=$($isql_cmd << EOF
@@ -133,7 +137,6 @@ EOF
     fi
 
     next_index=$(printf "%02d" $((10#$index + 1)))
-
     new_filename=$(echo "$filename" | \sed "s/[0-9]*\./$next_index./")
     new_file_path=$(dirname "$current_file")/$new_filename
 
